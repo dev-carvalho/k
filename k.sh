@@ -489,7 +489,7 @@ k () {
           REPOBRANCH=$(command git --git-dir="$GIT_TOPLEVEL/.git" --work-tree="${NAME}" rev-parse --abbrev-ref HEAD 2>/dev/null)
           if (( IS_DIRECTORY )); then
             if command git --git-dir="$GIT_TOPLEVEL/.git" --work-tree="${NAME}" diff --stat --quiet --ignore-submodules HEAD &>/dev/null # if dirty
-              then REPOMARKER=$'\e[38;5;46m|\e[0m' # Show a green vertical bar for clean
+              then REPOMARKER=$'\e[38;5;46m\uE0A0\e[0m' # Show a green vertical bar for clean
               else REPOMARKER=$'\e[0;31m+\e[0m' # Show a red vertical bar if dirty
             fi
           fi
@@ -508,9 +508,9 @@ k () {
             if [[ $STATUS == ' M' ]]; then REPOMARKER=$'\e[0;31m+\e[0m';     # Tracked & Dirty
           elif [[ $STATUS == 'M ' ]]; then REPOMARKER=$'\e[38;5;082m+\e[0m'; # Tracked & Dirty & Added
           elif [[ $STATUS == '??' ]]; then REPOMARKER=$'\e[38;5;214m+\e[0m'; # Untracked
-          elif [[ $STATUS == '!!' ]]; then REPOMARKER=$'\e[38;5;238m|\e[0m'; # Ignored
+          elif [[ $STATUS == '!!' ]]; then REPOMARKER=$'\e[38;5;238m\uE0A0\e[0m'; # Ignored
           elif [[ $STATUS == 'A ' ]]; then REPOMARKER=$'\e[38;5;082m+\e[0m'; # Added
-          else                             REPOMARKER=$'\e[38;5;082m|\e[0m'; # Good
+          else                             REPOMARKER=$'\e[38;5;082m\uE0A0\e[0m'; # Good
           fi
         fi
       fi
